@@ -29,8 +29,9 @@ abstract class BaseViewModel<Event : UiEvent, State : UiState, Effect : UiEffect
     /**
      * Start listening to Event
      */
+     
     private fun subscribeEvents() {
-        coroutineScope.launch {
+        coroutineScope.launch(Dispatchers.Default) {
             event.collect {
                 handleEvent(it)
             }
